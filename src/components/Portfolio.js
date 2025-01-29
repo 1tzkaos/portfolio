@@ -15,6 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import PatentPreview from "../assets/Patent-Preview.png";
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,7 +59,7 @@ const Portfolio = () => {
       description:
         "U.S. Patent #11244308 - Developed a method for a blockchain-based system managing tangible product records, demonstrating technical innovation and intellectual property development capabilities.",
       tech: ["Blockchain", "System Architecture", "Innovation"],
-      image: "/src/assets/Patent-Preview.png",
+      image: PatentPreview,
     },
     {
       title: "Software Solutions",
@@ -232,13 +233,11 @@ const Portfolio = () => {
                           View Patent Document
                         </button>
                       </DialogTrigger>
-                      <DialogContent className="w-[95vw] max-w-[95vw] h-[95vh] p-4">
-                        <DialogHeader className="mb-4">
-                          <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                            U.S. Patent #11244308
-                          </DialogTitle>
+                      <DialogContent className="h-[95vh]">
+                        <DialogHeader>
+                          <DialogTitle>U.S. Patent #11244308</DialogTitle>
                         </DialogHeader>
-                        <div className="h-[calc(95vh-80px)]">
+                        <div className="h-[calc(95vh-120px)]">
                           <embed
                             src="/US11244308.pdf"
                             type="application/pdf"
