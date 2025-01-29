@@ -17,6 +17,7 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import PatentPreview from "../assets/Patent-Preview.png";
+import WorkoutPreview from "../assets/workout-app-screenshot.png";
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,14 +62,14 @@ const Portfolio = () => {
   const csProjects = [
     {
       title: "Fitness & Nutrition Tracker",
+      image: WorkoutPreview,
       description:
-        "Developed a comprehensive mobile app using React Native with dual functionality: a workout tracker for logging exercises, sets, and analyzing performance trends, plus a nutrition tracker integrated with the USDA database and barcode scanning for food logging. Features include exercise analytics, performance visualization, and detailed nutrition data.",
+        "Developed a comprehensive workout tracking application using React Native. Features include customizable workout plans, progress tracking, and exercise logging with real-time updates.",
       tech: [
         "React Native",
-        "USDA API",
-        "AsyncStorage",
-        "Barcode Scanning",
-        "Data Visualization",
+        "JavaScript",
+        "Mobile Development",
+        "UI/UX Design",
       ],
       link: "https://github.com/1tzkaos/Workout-App",
     },
@@ -286,6 +287,13 @@ const Portfolio = () => {
                 key={project.title}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700"
               >
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-blue-400">
                     {project.title}
