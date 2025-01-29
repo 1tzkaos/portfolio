@@ -1,5 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, Menu, X, FileText } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Menu,
+  X,
+  FileText,
+  Maximize2,
+} from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +26,11 @@ const Portfolio = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Just for debugging - remove this later
+  useEffect(() => {
+    console.log("Portfolio component mounted");
   }, []);
 
   const navigation = [
@@ -38,8 +58,7 @@ const Portfolio = () => {
       description:
         "U.S. Patent #11244308 - Developed a method for a blockchain-based system managing tangible product records, demonstrating technical innovation and intellectual property development capabilities.",
       tech: ["Blockchain", "System Architecture", "Innovation"],
-      image: "/api/placeholder/400/300",
-      pdfUrl: "/src/assets/US11244308.pdf",
+      image: "/src/assets/Patent-Preview.png",
     },
     {
       title: "Software Solutions",
@@ -205,16 +224,29 @@ const Portfolio = () => {
                       </span>
                     ))}
                   </div>
-                  {project.pdfUrl && (
-                    <a
-                      href={project.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-300"
-                    >
-                      <FileText size={18} className="mr-2" />
-                      View Patent Document
-                    </a>
+                  {project.title === "Blockchain Patent" && (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="inline-flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-300">
+                          <FileText size={18} className="mr-2" />
+                          View Patent Document
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="w-[95vw] max-w-[95vw] h-[95vh] p-4">
+                        <DialogHeader className="mb-4">
+                          <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                            U.S. Patent #11244308
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="h-[calc(95vh-80px)]">
+                          <embed
+                            src="/US11244308.pdf"
+                            type="application/pdf"
+                            className="w-full h-full rounded-lg"
+                          />
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   )}
                 </div>
               </div>
